@@ -3,6 +3,7 @@ const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const port=process.env.PORT || 3000
 
 const db = require("./config/db.js");
 
@@ -36,8 +37,8 @@ mongoClient.connect(function(err, client) {
   dbCompany = client.db("KudosDB").collection("BillenniumConfig");
   require("./app/routesKudos")(app, dbKudos);
   require("./app/routesConfig")(app, dbCompany);
-  app.listen(3000, function() {
-    console.log("Server wait cor conection...");
+  app.listen(port, function() {
+    console.log("Server wait cor conection... on " + port);
   });
 });
 
