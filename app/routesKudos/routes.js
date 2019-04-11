@@ -1,6 +1,9 @@
 const api_key = require("../../config/sendGrid");
 
 module.exports = function(app, dbKudos) {
+
+
+
   app.get("/api/kudos", function(req, res) {
     dbKudos
       .find({})
@@ -60,5 +63,9 @@ module.exports = function(app, dbKudos) {
       sgMail.send(msg);
     }
     
+  });
+
+  app.get("/", function(req, res) {
+    res.send("Hello Oleg!");
   });
 };
